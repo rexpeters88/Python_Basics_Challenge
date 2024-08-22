@@ -1,1 +1,7 @@
-Analysis results will be here
+Financial Analysis
+-------------------------
+Total Months: {unique_months}
+Total: ${net_total}
+Average Change: ${rounded_avg_change}
+Greatest Increase in Profits: {greatest_increase[0]} (${greatest_increase[1]})
+Greatest Decrease in Profits: {greatest_decrease[0]} (${greatest_decrease[1]})
