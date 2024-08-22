@@ -7,7 +7,7 @@ csvpath = 'Resources/budget_data.csv'
 total_months = 0
 dates = []
 net_total = 0
-previous_profit_loss = None
+previous_profit_loss = None # Neccesary to account for having nothing to compare the first value to
 changes = []
 greatest_increase = ["", 0]
 greatest_decrease = ["", 0]
@@ -15,29 +15,31 @@ greatest_decrease = ["", 0]
 # Open and read the CSV file
 with open(csvpath, 'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
-    # Skip the header
     next(csvreader)
     
     # Iterate through rows
     for row in csvreader:
-        # Increment total months
+        # Add total months
         total_months += 1
         # Append date to the list
-        dates.append(row[0])  # Assuming date is in the first column
+        dates.append(row[0])  
 
         profit_loss = int(row[1])  
         net_total += profit_loss
-
-        if previous_profit_loss is not None:
+        
+        # Calculate differences between each profit/loss and add value to array
+        if previous_profit_loss is not None: # 'None' allows us to skip the first value since there is no prior value to compare it to
             change = profit_loss - previous_profit_loss
             changes.append(change)
 
+            # Compare each change to following change to find largest increase and decrease
             if change > greatest_increase[1]:
                 greatest_increase = [row[0], change]
 
             if change < greatest_decrease[1]:
                 greatest_decrease = [row[0], change]
 
+        # Update proft/loss for next row
         previous_profit_loss = profit_loss
 
 # Calculate the total number of unique months
