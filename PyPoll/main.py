@@ -53,3 +53,23 @@ print(f"Winner: {winner}")
 print("-------------------------")
 
 
+# Added script to save the result in the results.txt document saved in PyPoll Analysis Folder
+output_path = '/Users/rexpeters/Desktop/python-challenge/PyBank/analysis/results.txt'
+with open(output_path, 'w') as file:
+    file.write("Election Results\n")
+    file.write("-------------------------\n")
+    file.write(f"Total Votes: {total_votes}\n")
+    file.write("-------------------------\n")
+    # Remade dictionary to export the percentage votes dictionary
+    # Fixed exportation bug that was not allowing me to properly export (likely due to issues with indentation in the first calculation)
+    percentage_votes_export = {}
+    for z, f in votes.items():
+        percentage_export = (f / total_votes) * 100
+        rounded_percentage_export = round(percentage_export, 3)
+        percentage_votes_export[z] = rounded_percentage_export
+        file.write(f"{z}: {rounded_percentage_export}% ({f} votes)\n")
+    file.write("-------------------------\n")
+    file.write(f"Winner: {winner}\n")
+    file.write("-------------------------\n")
+
+
