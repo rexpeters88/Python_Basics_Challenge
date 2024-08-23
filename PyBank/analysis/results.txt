@@ -1,7 +1,7 @@
 Financial Analysis
 -------------------------
-Total Months: {unique_months}
-Total: ${net_total}
-Average Change: ${rounded_avg_change}
-Greatest Increase in Profits: {greatest_increase[0]} (${greatest_increase[1]})
-Greatest Decrease in Profits: {greatest_decrease[0]} (${greatest_decrease[1]})
+Total Months: 86
+Total: $22564198
+Average Change: $-8311.11
+Greatest Increase in Profits: Aug-16 ($1862002)
+Greatest Decrease in Profits: Feb-14 ($-1825558)

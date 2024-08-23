@@ -23,9 +23,9 @@ with open(csvpath, 'r') as csvfile:
         total_months += 1
         # Append date to the list
         dates.append(row[0])  
-
+        # Read profit/loss values in the second column
         profit_loss = int(row[1])  
-        net_total += profit_loss
+        net_total += profit_loss # adds each row to running total
         
         # Calculate differences between each profit/loss and add value to array
         if previous_profit_loss is not None: # 'None' allows us to skip the first value since there is no prior value to compare it to
@@ -59,15 +59,15 @@ print(f"Average Change: ${rounded_avg_change}")
 print(f"Greatest Increase in Profits: {greatest_increase[0]} (${greatest_increase[1]})")
 print(f"Greatest Decrease in Profits: {greatest_decrease[0]} (${greatest_decrease[1]})")
 
-
-output_path = 'analysis/results.txt'
+# Script results to analysis folder to txt file using same print values as above
+output_path = '/Users/rexpeters/Desktop/python-challenge/PyBank/analysis/results.txt'
 with open(output_path, 'w') as textfile:
     textfile.write("Financial Analysis\n")
     textfile.write("-------------------------\n")
-    textfile.write("Total Months: {unique_months}\n")
-    textfile.write("Total: ${net_total}\n")
-    textfile.write("Average Change: ${rounded_avg_change}\n")
-    textfile.write("Greatest Increase in Profits: {greatest_increase[0]} (${greatest_increase[1]})\n")
-    textfile.write("Greatest Decrease in Profits: {greatest_decrease[0]} (${greatest_decrease[1]})\n")
+    textfile.write(f"Total Months: {unique_months}\n")
+    textfile.write(f"Total: ${net_total}\n")
+    textfile.write(f"Average Change: ${rounded_avg_change}\n")
+    textfile.write(f"Greatest Increase in Profits: {greatest_increase[0]} (${greatest_increase[1]})\n")
+    textfile.write(f"Greatest Decrease in Profits: {greatest_decrease[0]} (${greatest_decrease[1]})\n")
 
 
